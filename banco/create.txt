@@ -1,0 +1,108 @@
+-- --------------------------------------------------------
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           10.2.9-MariaDB - mariadb.org binary distribution
+-- OS do Servidor:               Win64
+-- HeidiSQL Versão:              10.2.0.5599
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Copiando estrutura do banco de dados para restaurante
+CREATE DATABASE IF NOT EXISTS `restaurante` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci */;
+USE `restaurante`;
+
+-- Copiando estrutura para tabela restaurante.param
+CREATE TABLE IF NOT EXISTS `param` (
+  `id_param` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_param` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_valor` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_descricao` text COLLATE latin1_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id_param`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- Copiando dados para a tabela restaurante.param: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `param` DISABLE KEYS */;
+/*!40000 ALTER TABLE `param` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela restaurante.pedidos
+CREATE TABLE IF NOT EXISTS `pedidos` (
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `nr_mesa` int(11) DEFAULT NULL,
+  `nr_total` double DEFAULT NULL,
+  `nm_user` varchar(100) COLLATE latin1_general_ci DEFAULT NULL,
+  `dt_entrada` datetime DEFAULT NULL,
+  `dt_saida` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_pedido`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- Copiando dados para a tabela restaurante.pedidos: 1 rows
+/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+INSERT INTO `pedidos` (`id_pedido`, `nr_mesa`, `nr_total`, `nm_user`, `dt_entrada`, `dt_saida`) VALUES
+	(1, 1, 100, 'natalia', '2020-01-28 15:10:52', '2020-01-28 15:21:53');
+/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela restaurante.porcoes
+CREATE TABLE IF NOT EXISTS `porcoes` (
+  `id_porcao` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_nome` varchar(100) COLLATE latin1_general_ci DEFAULT NULL,
+  `nr_peso` double DEFAULT NULL,
+  `nm_desc` text COLLATE latin1_general_ci DEFAULT NULL,
+  `dt_cadastro` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_porcao`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- Copiando dados para a tabela restaurante.porcoes: 4 rows
+/*!40000 ALTER TABLE `porcoes` DISABLE KEYS */;
+INSERT INTO `porcoes` (`id_porcao`, `nm_nome`, `nr_peso`, `nm_desc`, `dt_cadastro`) VALUES
+	(1, 'arroz', 100, 'porcao de arroz', '2020-01-28 15:11:19'),
+	(2, 'feijao', 100, 'porcao de feijao', '2020-01-28 15:11:38'),
+	(3, 'frango ao molho', 100, 'porcao de frango ao molho', '2020-01-28 15:12:04'),
+	(4, 'salada', 20, 'porcao de salada', '2020-01-28 15:12:26');
+/*!40000 ALTER TABLE `porcoes` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela restaurante.refeicoes
+CREATE TABLE IF NOT EXISTS `refeicoes` (
+  `id_refeicao` int(11) NOT NULL AUTO_INCREMENT,
+  `nm_nome` varchar(100) COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_desc` text COLLATE latin1_general_ci DEFAULT NULL,
+  `pr_1` int(11) DEFAULT NULL,
+  `pr_2` int(11) DEFAULT NULL,
+  `pr_3` int(11) DEFAULT NULL,
+  `pr_4` int(11) DEFAULT NULL,
+  `pr_5` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_refeicao`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- Copiando dados para a tabela restaurante.refeicoes: 1 rows
+/*!40000 ALTER TABLE `refeicoes` DISABLE KEYS */;
+INSERT INTO `refeicoes` (`id_refeicao`, `nm_nome`, `nm_desc`, `pr_1`, `pr_2`, `pr_3`, `pr_4`, `pr_5`) VALUES
+	(1, 'Frango ao molho', 'Refeição Frango ao Molho', 1, 2, 3, 4, NULL);
+/*!40000 ALTER TABLE `refeicoes` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela restaurante.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `mn_nome` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_login` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_senha` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `nr_tel` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_email` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `dt_cadastro` datetime DEFAULT NULL,
+  `ultimo_acesso` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- Copiando dados para a tabela restaurante.usuarios: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id_usuario`, `mn_nome`, `nm_login`, `nm_senha`, `nr_tel`, `nm_email`, `dt_cadastro`, `ultimo_acesso`) VALUES
+	(1, 'Natalia', 'natalia', '123456', '1136534800', 'natalia@estec.com.br', '2020-01-28 15:16:06', '2020-01-28 15:16:07');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
