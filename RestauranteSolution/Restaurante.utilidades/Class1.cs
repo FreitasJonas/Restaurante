@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Restaurante.access
+namespace Restaurante.utilidades
 {
     public class Class1
     {

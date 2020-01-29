@@ -1,0 +1,4 @@
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.modelos\bin\Debug\Restaurante.modelos.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.modelos\bin\Debug\Restaurante.modelos.pdb
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.modelos\obj\Debug\Restaurante.modelos.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.modelos\obj\Debug\Restaurante.modelos.pdb

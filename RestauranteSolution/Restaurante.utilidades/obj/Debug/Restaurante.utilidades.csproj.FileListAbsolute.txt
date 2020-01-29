@@ -1,0 +1,5 @@
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.utilidades\bin\Debug\Restaurante.utilidades.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.utilidades\bin\Debug\Restaurante.utilidades.pdb
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.utilidades\obj\Debug\Restaurante.utilidades.csprojAssemblyReference.cache
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.utilidades\obj\Debug\Restaurante.utilidades.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.utilidades\obj\Debug\Restaurante.utilidades.pdb

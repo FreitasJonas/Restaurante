@@ -1,0 +1,9 @@
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\bin\Debug\Restaurante.access.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\bin\Debug\Restaurante.access.pdb
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\bin\Debug\MySql.Data.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\obj\Debug\Restaurante.access.csprojAssemblyReference.cache
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\obj\Debug\Restaurante.access.csproj.CopyComplete
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\obj\Debug\Restaurante.access.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\obj\Debug\Restaurante.access.pdb
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\bin\Debug\Restaurante.modelos.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.access\bin\Debug\Restaurante.modelos.pdb
