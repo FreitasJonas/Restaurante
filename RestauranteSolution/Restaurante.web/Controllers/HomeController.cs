@@ -12,17 +12,13 @@ namespace Restaurante.web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Refeicoes()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Porcoes()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

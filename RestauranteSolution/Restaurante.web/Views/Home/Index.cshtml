@@ -1,31 +1,130 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Cardápio";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<h3>Cardápio</h3>
+<hr />
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <a class="btn btn-primary pull-right" href="@Url.Action("Refeicoes")">Nova refeição</a>
+</div>
+
+<div class="container cardapio-container">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div class="cardapio-item">
+                <div class="refeição-imagem">
+                    <img src="~/Content/img/arroz.jpg" />
+                </div>
+                <div class="refeição-descricao">
+                    <h4>Nome</h4>
+                    <span>
+                        Picadinho de carne com batata.
+                    </span>
+                    <span>
+                        R$ 15.00
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="cardapio-item">
+                <div class="refeição-imagem">
+                    <img src="~/Content/img/arroz.jpg" />
+                </div>
+                <div class="refeição-descricao">
+                    <h4>Nome</h4>
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing <br />
+                        and typesetting industry.
+                    </span>
+                    <span>
+                        R$ 15.00
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="cardapio-item">
+                <div class="refeição-imagem">
+                    <img src="~/Content/img/arroz.jpg" />
+                </div>
+                <div class="refeição-descricao">
+                    <h4>Nome</h4>
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing <br />
+                        and typesetting industry.
+                    </span>
+                    <span>
+                        R$ 15.00
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="cardapio-item">
+                <div class="refeição-imagem">
+                    <img src="~/Content/img/arroz.jpg" />
+                </div>
+                <div class="refeição-descricao">
+                    <h4>Nome</h4>
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing <br />
+                        and typesetting industry.
+                    </span>
+                    <span>
+                        R$ 15.00
+                    </span>
+                </div>                
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+
+    .cardapio-container {
+        padding-top: 20px;
+    }
+
+    .cardapio-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: start;
+        margin: 4px 7px 4px 4px;
+    }
+
+    .cardapio-item:hover {
+        background-color: #f7f7f7;
+        border-radius: 10px;
+    }
+
+    .refeição-descricao {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    span {
+        display: block;
+    }
+
+    img {
+        border-radius: 10%;
+        width: 130px;
+        height: 130px;
+    }
+    
+</style>
+
+
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

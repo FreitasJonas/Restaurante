@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PorcaoModel.cs" />
     <Compile Include="Models\UsuarioLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessao\GerenciadorDeSessao.cs" />
@@ -145,6 +146,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\arroz.jpg" />
     <Content Include="Content\login-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -174,10 +176,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Usuarios.cshtml" />
+    <Content Include="Views\Home\Porcoes.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\Relatorios.cshtml" />
+    <Content Include="Views\Home\Parametros.cshtml" />
+    <Content Include="Views\Home\Refeicoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

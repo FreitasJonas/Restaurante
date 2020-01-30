@@ -51,18 +51,20 @@ CREATE TABLE IF NOT EXISTS `porcoes` (
   `id_porcao` int(11) NOT NULL AUTO_INCREMENT,
   `nm_nome` varchar(100) COLLATE latin1_general_ci DEFAULT NULL,
   `nr_peso` double DEFAULT NULL,
+  `nr_valor` double DEFAULT NULL,
   `nm_desc` text COLLATE latin1_general_ci DEFAULT NULL,
+  `nm_imagem` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
   `dt_cadastro` datetime DEFAULT NULL,
   PRIMARY KEY (`id_porcao`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- Copiando dados para a tabela restaurante.porcoes: 4 rows
 /*!40000 ALTER TABLE `porcoes` DISABLE KEYS */;
-INSERT INTO `porcoes` (`id_porcao`, `nm_nome`, `nr_peso`, `nm_desc`, `dt_cadastro`) VALUES
-	(1, 'arroz', 100, 'porcao de arroz', '2020-01-28 15:11:19'),
-	(2, 'feijao', 100, 'porcao de feijao', '2020-01-28 15:11:38'),
-	(3, 'frango ao molho', 100, 'porcao de frango ao molho', '2020-01-28 15:12:04'),
-	(4, 'salada', 20, 'porcao de salada', '2020-01-28 15:12:26');
+INSERT INTO `porcoes` (`id_porcao`, `nm_nome`, `nr_peso`, `nr_valor`, `nm_desc`, `nm_imagem`, `dt_cadastro`) VALUES
+	(1, 'arroz', 100, 5, 'porcao de arroz', NULL, '2020-01-28 15:11:19'),
+	(2, 'feijao', 100, 3, 'porcao de feijao', NULL, '2020-01-28 15:11:38'),
+	(3, 'frango ao molho', 100, 4, 'porcao de frango ao molho', NULL, '2020-01-28 15:12:04'),
+	(4, 'salada', 20, 6, 'porcao de salada', NULL, '2020-01-28 15:12:26');
 /*!40000 ALTER TABLE `porcoes` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela restaurante.refeicoes
@@ -92,15 +94,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nm_senha` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
   `nr_tel` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
   `nm_email` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `perfil` int(11) DEFAULT NULL,
   `dt_cadastro` datetime DEFAULT NULL,
   `ultimo_acesso` datetime DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- Copiando dados para a tabela restaurante.usuarios: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela restaurante.usuarios: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id_usuario`, `mn_nome`, `nm_login`, `nm_senha`, `nr_tel`, `nm_email`, `dt_cadastro`, `ultimo_acesso`) VALUES
-	(1, 'Natalia', 'natalia', '123456', '1136534800', 'natalia@estec.com.br', '2020-01-28 15:16:06', '2020-01-28 15:16:07');
+INSERT INTO `usuarios` (`id_usuario`, `mn_nome`, `nm_login`, `nm_senha`, `nr_tel`, `nm_email`, `perfil`, `dt_cadastro`, `ultimo_acesso`) VALUES
+	(1, 'Natalia', 'natalia', '123456', '1136534800', 'natalia@estec.com.br', 0, '2020-01-28 15:16:06', '2020-01-28 15:16:07');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

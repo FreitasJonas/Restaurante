@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Refeições";
+}
+
+<h3>Adicionar Refeição</h3>
+<hr />
+
+<div class="row">
+    <a class="btn btn-primary pull-right" href="@Url.Action("Porcoes")">Cadastrar porção</a>
+</div>
+
+<div class="form-group">
+    <label for="nome-refeicao">Refeição</label>
+    <input type="text" class="form-control" id="nome-refeicao" placeholder="Nome do prato">
+</div>
+
+<div class="form-group">
+    <label for="descricao-refeicao">Descrição</label>
+    <textarea type="text" class="form-control" id="descricao-refeicao" placeholder="Descrição da refeição" rows="10"></textarea>
+</div>
+
+<button type="button" class="btn btn-primary">Salvar</button>
+
+<hr />
+
+<div class="porcao-container">
+
+    <ul class="lista-items">
+        <li>
+            <div class="porcao-item">
+                <img src="~/Content/img/arroz.jpg" width="100" height="100" />
+                <div class="item-texto">
+                    <h4>Arroz (pequeno)</h4>
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </span>
+                    <span>
+                        Peso: 200g <br />
+                        Preço: R$ 3,00
+                    </span>
+                </div>
+            </div>
+
+            <hr />
+        </li>
+
+        <li>
+            <div class="porcao-item">
+                <img src="~/Content/img/arroz.jpg" width="100" height="100" />
+                <div class="item-texto">
+                    <h4>Arroz (pequeno)</h4>
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </span>
+                    <span>
+                        Peso: 200g <br />
+                        Preço: R$ 3,00
+                    </span>
+                </div>
+            </div>
+
+            <hr />
+        </li>
+
+        <li>
+            <div class="porcao-item">
+                <img src="~/Content/img/arroz.jpg" width="100" height="100" />
+                <div class="item-texto">
+                    <h4>Arroz (pequeno)</h4>
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </span>
+                    <span>
+                        Peso: 200g <br />
+                        Preço: R$ 3,00
+                    </span>
+                </div>
+            </div>
+
+            <hr />
+        </li>
+
+
+    </ul>
+
+</div>
+
+<style>
+    .porcao-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    img {
+        border-radius: 30%;
+    }
+
+    span {
+        display: block;
+    }
+
+    .item-texto {
+        margin-left: 30px;
+    }
+
+    .porcao-item {
+        display: flex;
+        justify-content: flex-start;
+        height: 150px;
+    }
+
+    .lista-items {
+        list-style-type: none;
+    }
+
+        .lista-items li :hover {
+            background-color: #fcfcfc;
+            border-radius: 30px;
+        }
+</style>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
