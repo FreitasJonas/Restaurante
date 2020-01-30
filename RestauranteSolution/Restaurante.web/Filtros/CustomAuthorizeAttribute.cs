@@ -1,4 +1,5 @@
 ﻿using Restaurante.modelos;
+using Restaurante.utilidades;
 using Restaurante.web.Sessao;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +9,7 @@ namespace Restaurante.web.Filtros
 {
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
-        public CustomAuthorizeAttribute(string[] perfis)
+        public CustomAuthorizeAttribute(params Perfis[] perfis)
         {
             foreach (var perfil in perfis)
             {
@@ -23,6 +24,11 @@ namespace Restaurante.web.Filtros
             if (gSessao.ValidaSessao())
             {
                 var usuario = gSessao.PegaUsuario();
+
+                if (usuario == null)
+                {
+                    return false;
+                }
 
                 if (!string.IsNullOrEmpty(this.Roles))
                 {
@@ -49,9 +55,9 @@ namespace Restaurante.web.Filtros
         }
 
         private bool UserIsInRoles(Usuario usuario)
-        {
-            //if (this.Roles.Contains(usuario.UsuarioPerfil))
-            if (this.Roles.Contains("usuario"))
+        {   
+            var perfil = (Perfis)usuario.UsuarioPerfil;
+            if (this.Roles.Contains(perfil.ToString().ToUpper()))
             {
                 return true;
             }

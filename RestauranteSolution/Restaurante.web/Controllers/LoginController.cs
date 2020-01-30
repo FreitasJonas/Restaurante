@@ -17,6 +17,8 @@ namespace Restaurante.web.Controllers
 
         public ActionResult Index(string erro = "")
         {
+            Session.Clear();
+
             if (!string.IsNullOrEmpty(erro))
             {
                 ViewBag.LoginErro = erro;
@@ -34,6 +36,7 @@ namespace Restaurante.web.Controllers
 
                 if (usr != null)
                 {
+                    
                     var sessao = new GerenciadorDeSessao(this.HttpContext);
                     sessao.GuardaUsuario(usr);
                     return RedirectToAction("Index", "Home");

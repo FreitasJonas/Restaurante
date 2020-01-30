@@ -22,7 +22,7 @@ namespace Restaurante.web.Sessao
 
         public Usuario PegaUsuario()
         {
-            return ((Usuario)HttpContext.Session[KeySessionUser]);
+            return HttpContext.Session[KeySessionUser] as Usuario;
         }
 
         public bool ValidaSessao()
