@@ -1,13 +1,13 @@
 ﻿@model PorcaoModel
 
 @{
-    ViewBag.Title = "Editar Porcao";
+    ViewBag.Title = "Editar Porção";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Editar Porção</h2>
 
-@using (Html.BeginForm("EditarPorcao", "Home", FormMethod.Post, new { @id = "form-contato", @class = "form-horizontal" }))
+@using (Html.BeginForm("EditarPorcao", "Home", FormMethod.Post, new { @id = "form-porcao", @class = "form-horizontal", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -45,7 +45,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -53,17 +53,25 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
         </div>
     </div>
 
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Salvar" class="btn btn-primary" />
-        <a href="@Url.Action("Index")"class="btn btn-default">Voltar</a>
+    <div class="form-group">
+        @Html.Label("Escolher outra imagem", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" class="form-control" name="fileImage" id="fileImage" />
+            @Html.ValidationMessageFor(model => model.fileImage, "", new { @class = "text-danger" })
+        </div>
     </div>
-</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            <a href="@Url.Action("Porcoes")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
 </div>
 }
 

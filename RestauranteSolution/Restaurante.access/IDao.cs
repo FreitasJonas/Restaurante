@@ -9,5 +9,7 @@ namespace Restaurante.access
         List<Porcao> ListarPorcoes();
         Porcao PegaPorcao(int porcaoId);
         int AtualizaPorcao(Porcao porcao);
+        void InserePorcao(Porcao porcao);
+        void InsereRefeicao(Refeicao refeicao);
     }
 }

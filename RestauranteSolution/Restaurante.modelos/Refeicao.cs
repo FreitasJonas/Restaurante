@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace Restaurante.modelos
 {
-    public class Porcao
+    public class Refeicao
     {
-        public int? PorcaoId { get; set; }
+        public int? RefeicaoId { get; set; }
 
         public string Nome { get; set; }
 
-        public double Peso { get; set; }
-
-        public double Valor { get; set; }
-
         public string Descricao { get; set; }
 
-        public string Imagem { get; set; }
+        public int[] Porcoes { get; set; }
 
-        public DateTime Cadastro { get; set; }
+        public Refeicao()
+        {
+            Porcoes = new int[5];
+        }
     }
 }

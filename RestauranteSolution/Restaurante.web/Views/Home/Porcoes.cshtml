@@ -10,6 +10,10 @@
 
 @{ Html.RenderPartial("~/Views/Shared/_Mensagem.cshtml"); }
 
+<div class="row">
+    <a class="btn btn-primary pull-right" href="@Url.Action("NovaPorcao")">Nova Porção</a>
+</div>
+
 <ul>
 
     @foreach (var porcao in Model)

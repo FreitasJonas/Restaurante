@@ -1,6 +1,7 @@
 ﻿using Restaurante.modelos;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Restaurante.web.Models
@@ -8,7 +9,7 @@ namespace Restaurante.web.Models
     public class PorcaoModel
     {
         [HiddenInput]
-        public int PorcaoId { get; set; }
+        public int? PorcaoId { get; set; }
 
         [Display(Name = "Porção")]
         [Required(ErrorMessage = "Campo obrigatório")]
@@ -29,13 +30,15 @@ namespace Restaurante.web.Models
         public string Descricao { get; set; }
 
         [Display(Name = "Imagem")]
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Imagem { get; set; }
 
         [Display(Name = "Cadastro")]
         [Required(ErrorMessage = "Campo obrigatório")]
         [HiddenInput]
         public DateTime Cadastro { get; set; }
+
+        [Display(Name = "Selecionar Imagem")]
+        public HttpPostedFileBase fileImage { get; set; }
 
         public static PorcaoModel MapearParaModel(Porcao porcao)
         {

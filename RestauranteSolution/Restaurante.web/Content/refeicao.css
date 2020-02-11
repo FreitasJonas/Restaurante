@@ -1,0 +1,49 @@
+﻿.form-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 70%;
+    /*padding-left: 15px;*/
+}
+
+.forms {
+    width: 100%;
+}
+
+.porcoes {
+    width: 100%;
+}
+
+.lista-items {
+    list-style-type: none;
+}
+
+
+/*.porcao-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+img {
+    border-radius: 30%;
+}
+
+span {
+    display: block;
+}
+
+.item-texto {
+    margin-left: 30px;
+}
+
+.porcao-item {
+    display: flex;
+    justify-content: flex-start;
+    height: 150px;
+}
+
+.lista-items li :hover {
+    background-color: #fcfcfc;
+    border-radius: 30px;
+}*/

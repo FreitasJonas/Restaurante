@@ -1,0 +1,120 @@
+﻿@model RefeicaoModel
+
+@{
+    ViewBag.Title = "Refeições";
+}
+
+@section css{
+    <link href="~/Content/refeicao.css" rel="stylesheet" />
+}
+
+<h3>Adicionar Refeição</h3>
+<hr />
+
+@using (Html.BeginForm("NovaRefeicao", "Home", FormMethod.Post, new { @id = "form-refeicao", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-container">
+    <div class="forms">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Descricao, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+
+    <div class="porcoes">
+
+        <h4>Porções</h4>
+        <small>Selecione as porções que compoem a refeição, no máximo 5.</small>
+
+        <br /><br />
+
+        <ul class="lista-items">
+            @foreach (var p in Model._Porcoes)
+            {
+            <li>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="chk-@p.PorcaoId" name="checkbox" data-chkid="chk-@p.PorcaoId">
+                    <label class="custom-control-label" for="chk-@p.PorcaoId">@p.Nome</label>
+                </div>
+            </li>
+            }
+        </ul>
+
+    </div>
+
+   
+</div>    
+    
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $('#form-refeicao').submit(function (e) {
+            e.preventDefault();
+
+            let action = $(this).attr('action');
+
+            //Pegar porcoes
+            marcados = [];
+
+            $.each($("input[name='checkbox']:checked"), function(){
+                marcados.push($(this).data('chkid').split('-')[1]);
+            });
+
+            if (marcados.length > 5) {
+                alert('No máximo cinco opções podem ser marcadas!');
+                return;
+            }  
+
+            let dados = {
+                Nome: $('#Nome').val(),
+                Descricao: $('#Descricao').val(),
+                Porcoes: marcados
+            }
+
+            console.log(dados);
+
+            $.ajax({
+                method: 'POST',
+                url: action,
+                data: dados,
+                success: function (response) {
+
+                    if (response.mensagem == "OK") {
+                        window.location.href = response.url;
+                    }
+                    else if (response.mensagem == "ERRO VALIDAÇÃO") {
+                        alert(response.desc);
+                    }
+                    else {
+                        alert(response.mensagem);
+                    }
+
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        })
+
+    </script>
+}

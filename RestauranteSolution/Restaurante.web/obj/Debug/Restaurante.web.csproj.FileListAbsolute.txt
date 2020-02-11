@@ -68,6 +68,7 @@ D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\System.Web
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\System.Web.WebPages.dll
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\System.Web.WebPages.Razor.dll
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\WebGrease.dll
+D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\MySql.Data.dll
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\Restaurante.access.pdb
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\Restaurante.modelos.pdb
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\Restaurante.utilidades.pdb
@@ -88,4 +89,3 @@ D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\obj\Debug\Rest
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\obj\Debug\Restaurante.web.csproj.CopyComplete
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\obj\Debug\Restaurante.web.dll
 D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\obj\Debug\Restaurante.web.pdb
-D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\bin\MySql.Data.dll

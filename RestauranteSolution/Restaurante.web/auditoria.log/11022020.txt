@@ -1,0 +1,6 @@
+App : /LM/W3SVC/2/ROOT-1-132259104708166368 - Horário : 01:04:15 
+Não foi possível localizar uma parte do caminho 'D:\Projetos\Facul\Restaurante\RestauranteSolution\Restaurante.web\Home\Content\img\11022020 130415help_desk.png'.
+-------------------------------------------------------------------------------------------------------------------
+App : /LM/W3SVC/2/ROOT-1-132259256769518820 - Horário : 05:14:53 
+[InsereRefeicao] Fatal error encountered during command execution.
+-------------------------------------------------------------------------------------------------------------------

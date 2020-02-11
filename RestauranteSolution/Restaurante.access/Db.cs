@@ -189,7 +189,68 @@ namespace Restaurante.access
             }
             catch (Exception e)
             {
-                throw new Exception("[PegaPorcao] " + e.Message);
+                throw new Exception("[AtualizaPorcao] " + e.Message);
+            }
+            finally
+            {
+                FechaDb();
+            }
+        }
+
+        public void InserePorcao(Porcao porcao)
+        {
+            try
+            {
+                Cmd.CommandText = @"insert into porcoes (nm_nome, nr_peso, nr_valor, nm_desc, nm_imagem, dt_cadastro) values (@nm_nome, @nr_peso, @nr_valor, @nm_desc, @nm_imagem, @dt_cadastro);";
+
+                Cmd.Parameters.AddWithValue("nm_nome", porcao.Nome);
+                Cmd.Parameters.AddWithValue("nr_peso", porcao.Peso);
+                Cmd.Parameters.AddWithValue("nr_valor", porcao.Valor);
+                Cmd.Parameters.AddWithValue("nm_desc", porcao.Descricao);
+                Cmd.Parameters.AddWithValue("nm_imagem", porcao.Imagem);
+                Cmd.Parameters.AddWithValue("dt_cadastro", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                AbreDb();
+
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("[InserePorcao] " + e.Message);
+            }
+            finally
+            {
+                FechaDb();
+            }
+        }
+
+        public void InsereRefeicao(Refeicao refeicao)
+        {
+            try
+            {
+                Cmd.CommandText = @"insert into refeicoes (nm_nome, nm_desc, pr_1, pr_2, pr_3, pr_4, pr_5) values (@nm_nome, @nm_desc, @pr_1, @pr_2, @pr_3, @pr_4, @pr_5);";
+
+                Cmd.Parameters.AddWithValue("nm_nome", refeicao.Nome);
+                Cmd.Parameters.AddWithValue("nm_desc", refeicao.Descricao);
+
+                for (int i = 1; i <= 5; i++)
+                {
+                    if (i > refeicao.Porcoes.Length)
+                    {
+                        Cmd.Parameters.AddWithValue("pr_" + i, 0);
+                        continue;
+                    }
+
+                    Cmd.Parameters.AddWithValue("pr_" + i, refeicao.Porcoes[i - 1]);
+                }
+
+                AbreDb();
+
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("[InsereRefeicao] " + e.Message);
             }
             finally
             {

@@ -5,6 +5,7 @@ using Restaurante.web.Filtros;
 using Restaurante.web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
 
 namespace Restaurante.web.Controllers
@@ -36,20 +37,20 @@ namespace Restaurante.web.Controllers
             return View();
         }
 
-        public ActionResult Refeicoes(string Erro = "", string Sucesso = "")
-        {
-            if (!string.IsNullOrEmpty(Erro))
-            {
-                ViewBag.Erro = Erro;
-            }
+        //public ActionResult Refeicoes(string Erro = "", string Sucesso = "")
+        //{
+        //    if (!string.IsNullOrEmpty(Erro))
+        //    {
+        //        ViewBag.Erro = Erro;
+        //    }
 
-            if (!string.IsNullOrEmpty(Sucesso))
-            {
-                ViewBag.Sucesso = Sucesso;
-            }
+        //    if (!string.IsNullOrEmpty(Sucesso))
+        //    {
+        //        ViewBag.Sucesso = Sucesso;
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public ActionResult Porcoes(string Erro = "", string Sucesso = "")
         {
@@ -91,6 +92,27 @@ namespace Restaurante.web.Controllers
             }
         }
 
+        public ActionResult NovaRefeicao()
+        {
+            try
+            {
+                var model = new RefeicaoModel();
+                model._Porcoes = Db.ListarPorcoes();
+
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                Log.GeraLog(e);
+                return RedirectToAction("Refeicoes", new { Erro = MensagemDeErro });
+            }            
+        }
+
+        public ActionResult NovaPorcao()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult EditarPorcao(PorcaoModel porcaoModel)
         {
@@ -98,8 +120,19 @@ namespace Restaurante.web.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var filePath = "";  
+
+                    if (porcaoModel.fileImage != null)
+                    {
+                        var fileName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "").Trim() + "_" + porcaoModel.fileImage.FileName;
+                        filePath = Path.Combine(Server.MapPath("/Content/img"), fileName);
+
+                        porcaoModel.fileImage.SaveAs(filePath);
+                        porcaoModel.Imagem = fileName;
+                    }
+
                     Porcao porcao = porcaoModel.MapearParaObjeto(porcaoModel);
-                    var resultado = Db.AtualizaPorcao(porcao);
+                    Db.AtualizaPorcao(porcao);
 
                     return RedirectToAction("Porcoes", new { Sucesso = "Porção atualizada com sucesso!" });
                 }
@@ -113,6 +146,66 @@ namespace Restaurante.web.Controllers
             {
                 Log.GeraLog(e);
                 return RedirectToAction("Porcoes", new { Erro = MensagemDeErro });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult NovaPorcao(PorcaoModel porcaoModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var filePath = "";
+
+                    if (porcaoModel.fileImage != null)
+                    {
+                        var fileName = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "").Trim() + "_" + porcaoModel.fileImage.FileName;
+                        filePath = Path.Combine(Server.MapPath("/Content/img"), fileName);
+
+                        porcaoModel.fileImage.SaveAs(filePath);
+                        porcaoModel.Imagem = fileName;
+                    }
+
+                    Porcao porcao = porcaoModel.MapearParaObjeto(porcaoModel);
+                    Db.InserePorcao(porcao);
+
+                    return RedirectToAction("Porcoes", new { Sucesso = "Porção inserida com sucesso!" });
+                }
+                else
+                {
+                    ModelState.AddModelError("Erro", "Preencha todos os campos corretamente!");
+                    return View(porcaoModel);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.GeraLog(e);
+                return RedirectToAction("Porcoes", new { Erro = MensagemDeErro });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult NovaRefeicao(RefeicaoModel refeicaoModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {                    
+                    Refeicao refeicao = refeicaoModel.MapearParaObjeto(refeicaoModel);
+                    Db.InsereRefeicao(refeicao);
+
+                    return Json(new { mensagem = "OK", url = Url.Action("Index", new { Sucesso = "Refeição inserida com sucesso!" }) });
+                }
+                else
+                {
+                    return Json(new { mensagem = "ERRO VALIDAÇÃO", desc = "Preencha todos os campos corretamente!" });
+                }
+            }
+            catch (Exception e)
+            {
+                Log.GeraLog(e);
+                return Json(new { mensagem = "ERRO", url = Url.Action("Index", new { Erro = MensagemDeErro }) });
             }
         }
     }
