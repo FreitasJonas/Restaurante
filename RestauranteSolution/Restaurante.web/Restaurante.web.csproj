@@ -183,6 +183,8 @@
     <Content Include="Views\Home\Relatorios.cshtml" />
     <Content Include="Views\Home\Parametros.cshtml" />
     <Content Include="Views\Home\Refeicoes.cshtml" />
+    <Content Include="Views\Home\EditarPorcao.cshtml" />
+    <Content Include="Views\Shared\_Mensagem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

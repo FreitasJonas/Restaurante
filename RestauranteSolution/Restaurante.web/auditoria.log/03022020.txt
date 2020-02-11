@@ -1,0 +1,12 @@
+App : /LM/W3SVC/2/ROOT-2-132252250613597467 - Horário : 02:38:01 
+[PegaPorcao] Fatal error encountered during command execution.
+-------------------------------------------------------------------------------------------------------------------
+App : /LM/W3SVC/2/ROOT-2-132252250613597467 - Horário : 02:38:10 
+[PegaPorcao] Fatal error encountered during command execution.
+-------------------------------------------------------------------------------------------------------------------
+App : /LM/W3SVC/2/ROOT-5-132252271084898824 - Horário : 03:19:49 
+[PegaPorcao] Fatal error encountered during command execution.
+-------------------------------------------------------------------------------------------------------------------
+App : /LM/W3SVC/2/ROOT-6-132252279797473873 - Horário : 03:26:35 
+[PegaPorcao] Fatal error encountered during command execution.
+-------------------------------------------------------------------------------------------------------------------

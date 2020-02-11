@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Restaurante.modelos;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 
 namespace Restaurante.access
@@ -82,6 +83,113 @@ namespace Restaurante.access
             catch (Exception e)
             {
                 throw new Exception("[ValidaUsuario] [" + login + "] " + e.Message);
+            }
+            finally
+            {
+                FechaDb();
+            }
+        }
+
+        public List<Porcao> ListarPorcoes()
+        {
+            try
+            {
+                var porcoes = new List<Porcao>();
+
+                Cmd.CommandText = "select id_porcao, nm_nome, nr_peso, nr_valor, nm_desc, nm_imagem, dt_cadastro from porcoes;";
+
+                AbreDb();
+
+                Reader = Cmd.ExecuteReader();
+
+                while (Reader.Read())
+                {
+                    var porcao = new Porcao();
+
+                    porcao.PorcaoId = Reader.GetInt32(0);
+                    porcao.Nome = Reader.GetString(1);
+                    porcao.Peso = Reader.GetDouble(2);
+                    porcao.Valor = Reader.GetDouble(3);
+                    porcao.Descricao = Reader.GetString(4);
+                    porcao.Imagem = Reader.GetString(5);
+                    porcao.Cadastro = Reader.GetDateTime(6);
+
+                    porcoes.Add(porcao);
+                }
+
+                return porcoes;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("[ListarPorcoes] " +  e.Message);
+            }
+            finally
+            {
+                FechaDb();
+            }
+        }
+
+        public Porcao PegaPorcao(int porcaoId)
+        {
+            try
+            {
+                Porcao porcao = null;
+
+                Cmd.CommandText = "select id_porcao, nm_nome, nr_peso, nr_valor, nm_desc, nm_imagem, dt_cadastro from porcoes where id_porcao = @id_porcao;";
+                Cmd.Parameters.AddWithValue("id_porcao", porcaoId);
+
+                AbreDb();
+
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    porcao = new Porcao();
+
+                    porcao.PorcaoId = Reader.GetInt32(0);
+                    porcao.Nome = Reader.GetString(1);
+                    porcao.Peso = Reader.GetDouble(2);
+                    porcao.Valor = Reader.GetDouble(3);
+                    porcao.Descricao = Reader.GetString(4);
+                    porcao.Imagem = Reader.GetString(5);
+                    porcao.Cadastro = Reader.GetDateTime(6);
+                }
+
+                return porcao;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("[PegaPorcao] " + e.Message);
+            }
+            finally
+            {
+                FechaDb();
+            }
+        }
+
+        public int AtualizaPorcao(Porcao porcao)
+        {
+            try
+            {
+                Cmd.CommandText = @"update porcoes set 
+                                    nr_peso = @nr_peso,
+                                    nr_valor = @nr_valor, 
+                                    nm_desc = @nm_desc, 
+                                    nm_imagem = @nm_imagem where id_porcao = @id_porcao;";
+
+                Cmd.Parameters.AddWithValue("nr_peso", porcao.Peso);
+                Cmd.Parameters.AddWithValue("nr_valor", porcao.Valor);
+                Cmd.Parameters.AddWithValue("nm_desc", porcao.Descricao);
+                Cmd.Parameters.AddWithValue("nm_imagem", porcao.Imagem);
+                Cmd.Parameters.AddWithValue("id_porcao", porcao.PorcaoId);
+
+                AbreDb();
+
+                return Cmd.ExecuteNonQuery();               
+            }
+            catch (Exception e)
+            {
+                throw new Exception("[PegaPorcao] " + e.Message);
             }
             finally
             {

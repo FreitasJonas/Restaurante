@@ -1,9 +1,24 @@
-﻿@model PorcaoModel
+﻿@model List<Porcao>
 
 @{
-    ViewBag.Title = "Adicionar Porção";
+    ViewBag.Title = "Porções";
 }
 
 
 <h3>@ViewBag.Title</h3>
 <hr />
+
+@{ Html.RenderPartial("~/Views/Shared/_Mensagem.cshtml"); }
+
+<ul>
+
+    @foreach (var porcao in Model)
+    {
+        <li>
+            <a href="@Url.Action("EditarPorcao", "Home", new { PorcaoId = porcao.PorcaoId })">  @porcao.Nome  </a>
+        </li>
+    }
+
+</ul>
+
+

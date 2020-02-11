@@ -9,6 +9,8 @@
     <a class="btn btn-primary pull-right" href="@Url.Action("Refeicoes")">Nova refeição</a>
 </div>
 
+@{ Html.RenderPartial("~/Views/Shared/_Mensagem.cshtml"); }
+
 <div class="container cardapio-container">
     <div class="row">
 
@@ -79,7 +81,7 @@
                     <span>
                         R$ 15.00
                     </span>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
@@ -98,10 +100,10 @@
         margin: 4px 7px 4px 4px;
     }
 
-    .cardapio-item:hover {
-        background-color: #f7f7f7;
-        border-radius: 10px;
-    }
+        .cardapio-item:hover {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+        }
 
     .refeição-descricao {
         margin-left: 20px;
@@ -117,7 +119,6 @@
         width: 130px;
         height: 130px;
     }
-    
 </style>
 
 
